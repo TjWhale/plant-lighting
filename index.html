@@ -1,0 +1,290 @@
+<!-- Grow Lighting Calculator
+	copyright 2019 Jon Pennant
+--> 
+<head>
+	<style>
+		* {
+			margin: 0;
+			margin-top: 5px;
+			padding: 0;
+			font-size:20px;
+		}
+		table, th, td {
+  			border: 1px solid black;
+  			padding:5px;
+		}
+		.main-title{
+			text-align:center;
+			font-size:40px;
+		}
+		.section {
+			width:100%;
+			margin-top:30px;
+		}
+		.title-box {
+			width:100%;
+			font-size:30px;
+		}
+		.text-box {
+			width:100%;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="main-title">Plant Grow Light Calculator</div>
+	<div class="text-box"><a href="#help-section">Help!</a></div>
+	<div class="section">
+		<div class="title-box">What is the DLI for the plants you are growing?</div>
+		<div class="text-box">These examples are only a rough guide.</div>
+		<table>
+			<tr>
+				<th>Crop</th>
+				<th>DLI</th> 
+			</tr>
+			<tr>
+				<td>Shaded Forest Floor</td>
+				<td>1</td> 
+			</tr>
+			<tr>
+				<td>Seedlings and Cuttings</td>
+				<td>6-15</td> 
+			</tr>
+			<tr>
+				<td>Lettuce and Lefy Greens</td>
+				<td>12-15</td> 
+			</tr>
+			<tr>
+				<td>Cucumber</td>
+				<td>12-19</td> 
+			</tr>
+			<tr>
+				<td>Strawberry</td>
+				<td>17-19</td> 
+			</tr>
+			<tr>
+				<td>Sunlit Greenhouse Average</td>
+				<td>10-30</td> 
+			</tr>
+			<tr>
+				<td>Tomato, Sweet Pepper, Fruiting Plants</td>
+				<td>20-30+</td> 
+			</tr>
+			<tr>
+				<td>Monthly Outdoor Average Tropics</td>
+				<td>20-40+</td> 
+			</tr>
+			<tr>
+				<td>Cannabis</td>
+				<td>22-45+</td> 
+			</tr>
+			<tr>
+				<td>Highest Outdoor Recorded</td>
+				<td>70</td> 
+			</tr>
+		</table>
+		<div class="text-box">Expecting a value between 5 and 45, when in doubt go high.</div>
+		<input type="text" class="input-box" id="dli-input" value="12" /> mol PAR.
+	</div>
+
+	<div class="section">
+		<div class="title-box">How many hours per day will you run your lights?</div>
+		<div class="text-box">Expecting a value between 12 and 20.</div>
+		<input type="text" class="input-box" id="time-input" value="16" /> hours.
+		<div class="result-box" id="time-output"></div>
+	</div>
+
+	<div class="section">
+		<div class="title-box">How big is your grow area?</div>
+		<div class="text-box">Expecting a value between 1 and 1000.</div>
+		<input type="text" class="input-box" id="area-input-ft" value="16" /> square ft or 
+		<input type="text" class="input-box" id="area-input-m" value="2" /> square meters.
+		<div class="result-box" id="area-output"></div>
+	</div>
+
+	<div class="section">
+		<div class="title-box">What is the PPF of your lights in umol per joule?</div>
+		<div class="text-box">If you cannot find this info for the lights you are looking at then look at different lights. All good manufacturers should provide it. These values are just for rough guidance.</div>
+		<table>
+			<tr>
+				<th>Light Type</th>
+				<th>umol/joule</th> 
+			</tr>
+			<tr>
+				<td>Flourescent</td>
+				<td>0.8-1.0</td> 
+			</tr>
+			<tr>
+				<td>High Pressure Sodium (HPS)</td>
+				<td>0.9-1.7</td> 
+			</tr>
+			<tr>
+				<td>LED</td>
+				<td>0.9-2.5</td> 
+			</tr>
+			<tr>
+				<td>Ceramic Metal Halide</td>
+				<td>1.2-1.5</td> 
+			</tr>
+			<tr>
+				<td>Household LED bulbs</td>
+				<td>1.5</td> 
+			</tr>
+			<tr>
+				<td>Theoretical Optimal LED</td>
+				<td>4.6-5.1</td> 
+			</tr>
+		</table>
+		<div class="text-box">Expecting a value between 1 and 2.</div>
+		<input type="text" class="input-box" id="umolj-input" value="2" /> umol/joule.
+		<div class="result-box" id="umolj-output"></div>
+	</div>
+
+	<div class="section">
+		<div class="title-box">What is your cost of electricity in $ per kwh?</div>
+		<div class="text-box">Expecting a value between $0.01 and $0.5 per kwh.</div>
+		$<input type="text" class="input-box" id="cost-input" value="0.12" />
+		<div class="result-box" id="cost-output"></div>
+	</div>
+
+	<div class="section">
+		<div class="title-box">Final result.</div>
+		<div class="result-box" id="final-result"></div>
+	</div>
+
+	<div class="section">
+		<div class="title-box"  id="help-section">Help</div>
+		
+		<div class="text-box"><b>What is DLI?</b><br>Daily Light Integral is the amount of light, which the plant
+		can use (PAR), which hits it in a day. It is measured in moles. For example a grow setup might have a DLI
+		of 12 moles per day of PAR.</div>
+
+		<div class="text-box"><b>What is a mole?</b><br>One mole (mol) of something is 6x10^23 of it, which is a very big
+			number. So one mole of photons is 6x10^23 of them. This number is also known as <a href="https://en.wikipedia.org/wiki/Avogadro_constant">Avogardo's Constant</a><br>
+			It is also important to know about <b>umol</b> which are micro moles which are one millionth of a mole.</div>
+
+		<div class="text-box"><b>What is PAR?</b><br>Photosynthetically Active Radiation is light which a plant can use
+		to power photosynthesis. This means that it will be in the 400nm-700nm range.</div>
+
+		<div class="text-box"><b>What is PPF?</b><br>Photosynthetic Photon Flux is how many photons which are useful to a plant (PAR) which are produced by a light from a certain amount of electricity. It has units of umol per joule.</div>
+
+		<div class="text-box"><b>What is PPFD?</b><br>Photosynthetic Photon Flux Density is how many photons which are useful to a plant (PAR) which are hitting a particular area in one second. It has units of umol per second per square meter.</div>
+
+		<div class="text-box"><b>What is umol/joule?</b><br>umol per joule is the number of moles of PAR photons you get from one Joule of electricity. It measures how effective your light is at turning electricity into useful photons.</div>
+
+		<div class="text-box"><b>What are Joules and Watts?</b><br>Joules are the unit of electrical power, basically how many electrons is your appliance using. Watts is a measure of Joules per second.</div>
+
+		<div class="text-box"><b>My lights say they draw 30 Watts of electricity but are equivalent to a 300 Watt light, is this an amazing deal?</b><br>No. There is no free lunch in plant lighting. This calculator works out the actual amount of power you need to pull from the wall.</div>
+
+		<div class="text-box"><b>More Info</b><br>There is a comprehensive lighting guide <a href="https://www.reddit.com/r/HandsOnComplexity/comments/17nxhd/sags_plant_lighting_guide_linked_together/">here</a> if you want more information.</div>
+	</div>
+</body>
+
+<script>
+
+	var dli_input = document.getElementById("dli-input");
+	var time_input = document.getElementById("time-input");
+	var time_output = document.getElementById("time-output");
+	var area_input_ft = document.getElementById("area-input-ft");
+	var area_input_m = document.getElementById("area-input-m");
+	var area_output = document.getElementById("area-output");
+	var umolj_input = document.getElementById("umolj-input");
+	var umolj_output = document.getElementById("umolj-output");
+	var cost_input = document.getElementById("cost-input");
+	var cost_output = document.getElementById("cost-output");
+	var final_result = document.getElementById("final-result");
+	var dli = 12;
+	var time = 16;
+	var ppfd = 200;
+	var ppfd_total = 200;
+	var umolj = 1;
+	var watts = 1;
+	var cost = 1;
+	var cost_per_month = 0;
+	var area = 1; //this is in sqm
+
+	dli_input.addEventListener("input", dli_change);
+	time_input.addEventListener("input", time_change);
+	area_input_ft.addEventListener("input", area_change_ft);
+	area_input_m.addEventListener("input", area_change_m);
+	umolj_input.addEventListener("input", umolj_change);
+	cost_input.addEventListener("input", cost_change);
+
+	function dli_change(){
+		dli = parseFloat(dli_input.value);
+		update(1);
+	}
+
+	function time_change(){
+		time = parseFloat(time_input.value);
+		ppfd = dli*1000000/(time*60*60);
+		time_output.innerHTML = "There are " + time*60*60 + " seconds in " + time + " hours. To get " + dli + 
+			" mol of PAR in this time you need a PPFD of " + parseInt(ppfd) + " umol per second per square meter of PAR.";
+		update(2);
+	}
+
+	function area_change_ft(){
+		var area_ft = parseFloat(area_input_ft.value);
+		var area = area_ft/10.7639;
+		area_input_m.value = area.toFixed(2);
+		ppfd_total = ppfd*area;
+		area_output.innerHTML = "With an area of " + area.toFixed(2) + " square meters you will need a total PPFD of " + parseInt(ppfd_total) + " umol per second.";
+		update(3);
+	}
+
+
+	function area_change_m(){
+		var area = parseFloat(area_input_m.value);
+		area_input_ft.value = (area*10.7639).toFixed(2);
+		ppfd_total = ppfd*area;
+		area_output.innerHTML = "With an area of " + area.toFixed(2) + " square meters you will need a total PPFD of " + parseInt(ppfd_total) + " umol per second across the grow area.";
+		update(3);
+	}
+
+
+	function umolj_change(){
+		umolj = parseFloat(umolj_input.value);
+		watts = ppfd_total/umolj;
+		umolj_output.innerHTML = "To get a PPFD of " + parseInt(ppfd_total) + " umol per second across the grow area with " + umolj + " umol per joule you will need lights with at least " + parseInt(watts) + " watts of power. This is actual electricty drawn from the wall.";
+		update(4);
+	}
+
+	function cost_change(){
+		cost = parseFloat(cost_input.value);
+		var kwh = watts/1000;
+		var kwh_per_day = time*kwh;
+		var cost_per_day = kwh_per_day*cost;
+		cost_per_month = cost_per_day*30; 
+		cost_output.innerHTML = "With a cost of $" + cost.toFixed(2) + " per kwh and using " + kwh.toFixed(2) + " kwh you will spend $" + cost_per_day.toFixed(2) + " per day and $" + cost_per_month.toFixed(2) + " per 30 day month.";
+		update(5);
+	}
+
+	function final_result_change(){
+		final_result.innerHTML = "Get lights which use " + parseInt(watts) + " watts of actual electricity or more. This will use approx $" + cost_per_month.toFixed(2) + " of electricty per 30 day month.";
+	}
+
+	function update(step){
+		if (step <= 0){
+			dli_change();
+		}
+		if (step <= 1){
+			time_change();
+		}
+		if (step <= 2){
+			area_change_m();
+		}
+		if (step <= 3){
+			umolj_change();
+		}
+		if (step <= 4){
+			cost_change();
+		}
+		if (step <= 5){
+			final_result_change();
+		}
+	}
+
+	update(0);
+
+</script>
