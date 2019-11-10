@@ -2,6 +2,7 @@
 	copyright 2019 Jon Pennant
 --> 
 <head>
+	<title>Grow Light Calculator</title>
 	<style>
 		* {
 			margin: 0;
@@ -52,7 +53,7 @@
 				<td>6-15</td> 
 			</tr>
 			<tr>
-				<td>Lettuce and Lefy Greens</td>
+				<td>Lettuce and Leafy Greens</td>
 				<td>12-15</td> 
 			</tr>
 			<tr>
@@ -85,7 +86,7 @@
 			</tr>
 		</table>
 		<div class="text-box">Expecting a value between 5 and 45, when in doubt go high.</div>
-		<input type="text" class="input-box" id="dli-input" value="12" /> mol PAR.
+		<input type="text" class="input-box" id="dli-input" value="12" /> moles per square meter per day of PAR.
 	</div>
 
 	<div class="section">
@@ -97,31 +98,31 @@
 
 	<div class="section">
 		<div class="title-box">How big is your grow area?</div>
-		<div class="text-box">Expecting a value between 1 and 1000.</div>
+		<div class="text-box">For rectangular grow areas. Expecting a value between 1 and 1000.</div>
 		<input type="text" class="input-box" id="area-input-ft" value="16" /> square ft or 
-		<input type="text" class="input-box" id="area-input-m" value="2" /> square meters.
+		<input type="text" class="input-box" id="area-input-m" value="2" /> square meters.	
 		<div class="result-box" id="area-output"></div>
 	</div>
 
 	<div class="section">
-		<div class="title-box">What is the PPF of your lights in umol per joule?</div>
+		<div class="title-box">What is the PPE of your lights in umol per Joule?</div>
 		<div class="text-box">If you cannot find this info for the lights you are looking at then look at different lights. All good manufacturers should provide it. These values are just for rough guidance.</div>
 		<table>
 			<tr>
 				<th>Light Type</th>
-				<th>umol/joule</th> 
+				<th>umol/Joule</th> 
 			</tr>
 			<tr>
 				<td>Flourescent</td>
-				<td>0.8-1.0</td> 
+				<td>0.9-1.2</td> 
 			</tr>
 			<tr>
 				<td>High Pressure Sodium (HPS)</td>
-				<td>0.9-1.7</td> 
+				<td>0.9-1.8</td> 
 			</tr>
 			<tr>
 				<td>LED</td>
-				<td>0.9-2.5</td> 
+				<td>0.9-2.7</td> 
 			</tr>
 			<tr>
 				<td>Ceramic Metal Halide</td>
@@ -136,8 +137,8 @@
 				<td>4.6-5.1</td> 
 			</tr>
 		</table>
-		<div class="text-box">Expecting a value between 1 and 2.</div>
-		<input type="text" class="input-box" id="umolj-input" value="2" /> umol/joule.
+		<div class="text-box">Expecting a value between 1 and 2.5.</div>
+		<input type="text" class="input-box" id="umolj-input" value="2" /> umol per Joule.
 		<div class="result-box" id="umolj-output"></div>
 	</div>
 
@@ -160,8 +161,7 @@
 		<div class="title-box"  id="help-section">Help</div>
 		
 		<div class="text-box"><b>What is DLI?</b><br>Daily Light Integral is the amount of light, which the plant
-		can use (PAR), which hits it in a day. It is measured in moles. For example a grow setup might have a DLI
-		of 12 moles per day of PAR.</div>
+		can use (PAR), which hits a one sqaure meter area in a day. It is measured in moles per square meter. For example a grow setup might have a DLI of 12 moles per square meter per day of PAR. It is hard to give a solid number for any plant because at different light levels the plant will grow at different speeds. Therefore if you want to get a better understanding it's important to do your own research.</div>
 
 		<div class="text-box"><b>What is a mole?</b><br>One mole (mol) of something is 6x10^23 of it, which is a very big
 			number. So one mole of photons is 6x10^23 of them. This number is also known as <a href="https://en.wikipedia.org/wiki/Avogadro_constant">Avogardo's Constant</a><br>
@@ -170,13 +170,13 @@
 		<div class="text-box"><b>What is PAR?</b><br>Photosynthetically Active Radiation is light which a plant can use
 		to power photosynthesis. This means that it will be in the 400nm-700nm range.</div>
 
-		<div class="text-box"><b>What is PPF?</b><br>Photosynthetic Photon Flux is how many photons which are useful to a plant (PAR) which are produced by a light from a certain amount of electricity. It has units of umol per joule.</div>
+		<div class="text-box"><b>What is PPF?</b><br>Photosynthetic Photon Flux is how many photons which are useful to a plant (PAR) which are produced by a light per second of operation. It has units of umol per second.</div>
 
-		<div class="text-box"><b>What is PPFD?</b><br>Photosynthetic Photon Flux Density is how many photons which are useful to a plant (PAR) which are hitting a particular area in one second. It has units of umol per second per square meter.</div>
+		<div class="text-box"><b>What is PPE?</b><br>Photosynthetic Photon Efficiency is how many photons which are useful to a plant (PAR) are produced by a light from one Joule of electricity. It has units of umol per Joule.</div>
 
-		<div class="text-box"><b>What is umol/joule?</b><br>umol per joule is the number of moles of PAR photons you get from one Joule of electricity. It measures how effective your light is at turning electricity into useful photons.</div>
+		<div class="text-box"><b>What is PPFD?</b><br>Photosynthetic Photon Flux Density is how many photons which are useful to a plant (PAR) which are hitting a one square meter area in one second. It has units of umol per second per square meter.</div>
 
-		<div class="text-box"><b>What are Joules and Watts?</b><br>Joules are the unit of electrical power, basically how many electrons is your appliance using. Watts is a measure of Joules per second.</div>
+		<div class="text-box"><b>What are Joules and Watts?</b><br>Joules are the unit of electrical energy, basically how many electrons is your appliance using. Watts is a measure of Joules used per second.</div>
 
 		<div class="text-box"><b>My lights say they draw 30 Watts of electricity but are equivalent to a 300 Watt light, is this an amazing deal?</b><br>No. There is no free lunch in plant lighting. This calculator works out the actual amount of power you need to pull from the wall.</div>
 
@@ -200,7 +200,7 @@
 	var dli = 12;
 	var time = 16;
 	var ppfd = 200;
-	var ppfd_total = 200;
+	var ppf_total = 200;
 	var umolj = 1;
 	var watts = 1;
 	var cost = 1;
@@ -223,7 +223,7 @@
 		time = parseFloat(time_input.value);
 		ppfd = dli*1000000/(time*60*60);
 		time_output.innerHTML = "There are " + time*60*60 + " seconds in " + time + " hours. To get " + dli + 
-			" mol of PAR in this time you need a PPFD of " + parseInt(ppfd) + " umol per second per square meter of PAR.";
+			" mol per day per square meter of PAR in this time you need a PPFD of " + parseInt(ppfd) + " umol per second per square meter of PAR.";
 		update(2);
 	}
 
@@ -231,8 +231,8 @@
 		var area_ft = parseFloat(area_input_ft.value);
 		var area = area_ft/10.7639;
 		area_input_m.value = area.toFixed(2);
-		ppfd_total = ppfd*area;
-		area_output.innerHTML = "With an area of " + area.toFixed(2) + " square meters you will need a total PPFD of " + parseInt(ppfd_total) + " umol per second.";
+		ppf_total = ppfd*area;
+		area_output.innerHTML = "With an area of " + area.toFixed(2) + " square meters you will need a total PPF of " + parseInt(ppf_total) + " umol per second.";
 		update(3);
 	}
 
@@ -240,16 +240,16 @@
 	function area_change_m(){
 		var area = parseFloat(area_input_m.value);
 		area_input_ft.value = (area*10.7639).toFixed(2);
-		ppfd_total = ppfd*area;
-		area_output.innerHTML = "With an area of " + area.toFixed(2) + " square meters you will need a total PPFD of " + parseInt(ppfd_total) + " umol per second across the grow area.";
+		ppf_total = ppfd*area;
+		area_output.innerHTML = "With an area of " + area.toFixed(2) + " square meters you will need a total PPF of " + parseInt(ppf_total) + " umol per second across the grow area.";
 		update(3);
 	}
 
 
 	function umolj_change(){
 		umolj = parseFloat(umolj_input.value);
-		watts = ppfd_total/umolj;
-		umolj_output.innerHTML = "To get a PPFD of " + parseInt(ppfd_total) + " umol per second across the grow area with " + umolj + " umol per joule you will need lights with at least " + parseInt(watts) + " watts of power. This is actual electricty drawn from the wall.";
+		watts = ppf_total/umolj;
+		umolj_output.innerHTML = "To get a PPF of " + parseInt(ppf_total) + " umol per second across the grow area with " + umolj + " umol per Joule you will need lights with at least " + parseInt(watts) + " watts of power. This is actual electricty drawn from the wall.";
 		update(4);
 	}
 
